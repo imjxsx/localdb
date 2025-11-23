@@ -1,0 +1,54 @@
+{
+  "name": "@imjxsx/localdb",
+  "version": "1.0.0",
+  "description": "A lightweight MongoDB-style BSON database for Node.js",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "./dist",
+    "./README.md",
+    "./LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "pnpm run build"
+  },
+  "keywords": [
+    "database",
+    "bson",
+    "lowdb",
+    "lightweight",
+    "nosql",
+    "json-alternative",
+    "localdb"
+  ],
+  "author": "imjxsx",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imjxsx/localdb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imjxsx/localdb/issues"
+  },
+  "homepage": "https://github.com/imjxsx/localdb#readme",
+  "packageManager": "pnpm@10.20.0",
+  "dependencies": {
+    "bson": "6.10.4"
+  },
+  "devDependencies": {
+    "@types/node": "24.9.2",
+    "tsx": "4.20.6",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
