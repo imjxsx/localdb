@@ -1,5 +1,5 @@
 import path from "node:path";
-import { DB } from "./db";
+import { DB } from "./db.js";
 
 export class LocalDB {
   /** @private */

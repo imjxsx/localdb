@@ -1,6 +1,6 @@
 {
   "name": "@imjxsx/localdb",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight MongoDB-style BSON database for Node.js",
   "license": "MIT",
   "type": "module",
@@ -18,7 +18,10 @@
     "./LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
+    "dev": "node ./example/index",
+    "build": "pnpm run build:types && pnpm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "esbuild './src/**/*.ts' --outbase=src --outdir=dist --format=esm --platform=node --target=es2022 --sourcemap --minify --packages=external",
     "prepare": "pnpm run build"
   },
   "keywords": [
@@ -45,6 +48,7 @@
   },
   "devDependencies": {
     "@types/node": "24.9.2",
+    "esbuild": "0.27.0",
     "tsx": "4.20.6",
     "typescript": "5.9.3"
   },
