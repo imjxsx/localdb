@@ -112,10 +112,10 @@ export class DB {
     return path.basename(this.filepath, ".bson");
   }
   public autosave(delay: number): void {
-    if (this.timeout) {
+    if (this.timeout !== null) {
       return;
     }
-    setInterval(async () => {
+    this.timeout = setInterval(async () => {
       try {
         await this.save();
       }

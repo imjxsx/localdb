@@ -1,6 +1,6 @@
 {
   "name": "@imjxsx/localdb",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A lightweight MongoDB-style BSON database for Node.js",
   "license": "MIT",
   "type": "module",
