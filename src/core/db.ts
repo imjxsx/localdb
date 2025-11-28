@@ -10,6 +10,8 @@ export class DB {
   private filepath: string;
   /** @private */
   private store: Record<string, any>;
+  /** @private */
+  private timeout: NodeJS.Timeout | null = null;
   public catch?: (err: Error) => void;
   constructor(filepath: string) {
     this.filepath = path.isAbsolute(filepath) ? filepath : path.resolve(filepath);
@@ -73,6 +75,9 @@ export class DB {
     try {
       await fs.promises.unlink(this.filepath);
       this.store = {};
+      if (this.timeout) {
+        clearInterval(this.timeout);
+      }
     }
     catch (e) {
       if (this.catch) {
@@ -105,5 +110,20 @@ export class DB {
   }
   public get name(): string {
     return path.basename(this.filepath, ".bson");
+  }
+  public autosave(delay: number): void {
+    if (this.timeout) {
+      return;
+    }
+    setInterval(async () => {
+      try {
+        await this.save();
+      }
+      catch (e) {
+        if (this.catch) {
+          this.catch(toError(e));
+        }
+      }
+    }, delay);
   }
 }
